@@ -1,0 +1,86 @@
+/* src/components/styles/subdo.css */
+.mainSubdo {
+    background-color: #1b2f31;
+    margin: 0;
+    font-family: Circulito;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    position: relative;
+}
+
+.bn62 {
+    color: #1b2f31;
+    background-color: #1cc49d;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    width: 8em;
+    font-size: large;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.bn62:hover {
+    background-color: #18a98c;
+}
+
+.titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: xx-large;
+    color: #1cc49d;
+}
+
+.cuerpo {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cuerpo h3 {
+    color: white;
+}
+
+.boton {
+    padding: 10px;
+    margin: 10px;
+}
+
+.resultados {
+    color: white;
+}
+
+.regresarBTN {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    max-height: 50vh;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.subdomain-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #1b2f31;
+}
