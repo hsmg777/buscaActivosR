@@ -1,5 +1,5 @@
-// src/components/Subdominios.js
 import React, { useState } from 'react';
+import { utils, writeFile } from 'xlsx';
 import '../components/styles/subdo.css';
 
 const Subdominios = () => {
@@ -36,13 +36,26 @@ const Subdominios = () => {
 
     const evaluateIpRisk = (ip) => {
         if (!ip) {
-            return 1; // Riesgo bajo por defecto si IP es null o undefined
+            return 1; // Riesgo bajo por defecto si IP es null 
         }
         if (ip.startsWith("192.") || ip.startsWith("10.") || ip.startsWith("172.")) {
             return 2; // Medio Bajo
         } else {
             return 3; // Medio
         }
+    };
+
+    const exportToExcel = () => {
+        const dataForExcel = results.map(({ subdomain, ip, subdomainRisk, ipRisk }) => ({
+            Subdominio: subdomain,
+            IP: ip || 'N/A',
+            'Riesgo del Subdominio': subdomainRisk,
+            'Riesgo de la IP': ipRisk
+        }));
+        const worksheet = utils.json_to_sheet(dataForExcel);
+        const workbook = utils.book_new();
+        utils.book_append_sheet(workbook, worksheet, "Subdominios");
+        writeFile(workbook, "subdominios.xlsx");
     };
 
     return (
@@ -74,14 +87,17 @@ const Subdominios = () => {
                             <div key={index} className="subdomain-item">
                                 <strong>Subdominio:</strong> {subdomain.subdomain} <br />
                                 <strong>IP:</strong> {subdomain.ip || 'N/A'} <br />
-                                <strong>Riesgo del Subdominio:</strong> {subdomain.subdomainRisk} <br />
-                                <strong>Riesgo de la IP:</strong> {subdomain.ipRisk} <br />
+                                <strong>Riesgo del Subdominio:</strong> <span className={`highlight risk-${subdomain.subdomainRisk}`}>{subdomain.subdomainRisk}</span> <br />
+                                <strong>Riesgo de la IP:</strong> <span className={`highlight risk-${subdomain.ipRisk}`}>{subdomain.ipRisk}</span> <br />
                             </div>
                         ))
                     ) : (
                         <p>No hay resultados</p>
                     )}
                 </div>
+            </div>
+            <div className="boton">
+                <button onClick={exportToExcel} className="bn62">Exportar a Excel</button>
             </div>
             <div className="regresarBTN">
                 <a href="../" className="bn62">Regresar</a>

@@ -1,19 +1,24 @@
-/* src/components/styles/subdo.css */
-.mainSubdo {
-    background-color: #1b2f31;
+/* src/styles/google.css */
+@font-face {
+    font-family: 'Circulito';
+    src: url('../../../public/circular-std-medium-500.ttf') format('truetype');
+}
+
+.mainSearch {
+    background-color: #1cc49d;
     margin: 0;
     font-family: Circulito;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
+    height: 100vh;
     position: relative;
 }
-
 .highlight {
     padding: 2px 4px;
     border-radius: 4px;
+    font-weight: bold;
 }
 
 .risk-5 {
@@ -21,23 +26,17 @@
     color: white;
 }
 
-.risk-4, .risk-2 {
+.risk-4, .risk-3 {
     background-color: orange;
-    color: white;
-}
-
-.risk-3 {
-    background-color: red;
     color: white;
 }
 
 /* Sin color para risk-1, así que no necesita reglas CSS adicionales */
 
 
-
 .bn62 {
-    color: #1b2f31;
-    background-color: #1cc49d;
+    color: #1cc49d;
+    background-color: #1b2f31;
     border-radius: 50px;
     display: flex;
     justify-content: center;
@@ -51,60 +50,84 @@
 }
 
 .bn62:hover {
-    background-color: #18a98c;
+    background-color: #163023;
 }
 
-.titulo {
+.tittle {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: xx-large;
-    color: #1cc49d;
+    color: #1b2f31;
 }
 
-.cuerpo {
+.cuerpoGS {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.cuerpo h3 {
+.cuerpoGS h3 {
     color: white;
 }
 
-.boton {
+.botonGS {
     padding: 10px;
     margin: 10px;
 }
 
-.resultados {
-    color: white;
+.resultadosGS {
+    color: #1b2f31;
+    width: 80%;
+    height: 50vh; /* Altura fija para el área de resultados */
+    overflow-y: auto; /* Desplazamiento vertical */
 }
 
-.regresarBTN {
+.regresarBTNGS {
     position: absolute;
     bottom: 10px;
     left: 10px;
 }
 
-.grid-container {
+.result-grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.result-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-    max-height: 50vh;
-    overflow-y: auto;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding: 10px;
 }
 
-.subdomain-item {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+.result-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: #1b2f31;
+}
+
+.result-item h3 {
+    margin-top: 0;
+}
+
+.result-item a {
+    color: #1b2f31;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.result-item a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
 }

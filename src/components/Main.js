@@ -14,10 +14,10 @@ const Main = () => {
                 <Link to="/subdominio" className="bn62">Subdominios</Link>
                 </div>
                 <div className='boton'>
-                <a href="https://www.google.com" className="bn62" target="_blank" rel="noopener noreferrer">Google</a>
+                <Link to="/googleSearch" className="bn62">Google</Link>
                 </div>
                 <div className='boton'>
-                <a href="https://www.facebook.com" className="bn62" target="_blank" rel="noopener noreferrer">Social Nets</a>
+                <Link to="/socialNet" className="bn62">Social Net</Link>
                 </div>
             </div>
         </div>

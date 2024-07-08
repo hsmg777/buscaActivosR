@@ -1,0 +1,126 @@
+/* src/styles/social.css */
+@font-face {
+    font-family: 'Circulito'; /* Nombre de la fuente personalizada */
+    src: url('../../../public/circular-std-medium-500.ttf') format('truetype');
+}
+
+.mainSocial {
+    background-color: #1cc49d;
+    margin: 0;
+    font-family: Circulito;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+.bn62 {
+    color: #1cc49d;
+    background-color: #1b2f31;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    width: 8em;
+    font-size: large;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.bn62:hover {
+    background-color: #163023;
+}
+
+.tituloSN {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: xx-large;
+    color: #1b2f31;
+}
+
+.cuerpoSN {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cuerpoSN h3 {
+    color: white;
+}
+
+.botonSN {
+    padding: 10px;
+    margin: 10px;
+}
+
+.resultadosSN {
+    color: #1b2f31;
+    width: 80%;
+    height: 50vh; /* Altura fija para el área de resultados */
+    overflow-y: auto; /* Desplazamiento vertical */
+}
+
+.regresarBTNSN {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.resultados-gridSN {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    padding: 10px;
+}
+
+.result-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #1b2f31;
+}
+.highlight {
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.risk-5 {
+    background-color: red;
+    color: white;
+}
+
+.risk-4, .risk-3 {
+    background-color: orange;
+    color: white;
+}
+
+/* Sin color para risk-1, así que no necesita reglas CSS adicionales */
+
+
+.result-item h4 {
+    margin-top: 0;
+}
+
+.result-item a {
+    color: #1b2f31;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.result-item a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}

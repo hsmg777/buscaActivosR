@@ -1,5 +1,10 @@
 /* src/components/styles/site.css */
+@font-face {
+  font-family: 'Circulito'; /* Nombre de la fuente personalizada */
+  src: url('../../../public/circular-std-medium-500.ttf') format('truetype');
+}
 .main {
+  font-family:'Circulito';
   margin: 0;
   display: flex;
   flex-direction: column;
