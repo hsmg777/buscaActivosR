@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from 'react-router-dom';
 import { utils, writeFile } from 'xlsx';
 import './styles/google.css';
 
@@ -6,6 +7,7 @@ const GoogleSearch = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [results, setResults] = useState([]);
     const [error, setError] = useState(null);
+    const { userId } = useParams(); // Obtener el userId de los parámetros de la URL
 
     const evaluateRisk = (result) => {
         const title = result.title.toLowerCase();

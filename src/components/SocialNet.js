@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { utils, writeFile } from 'xlsx';
 import './styles/social.css';
+import { useParams } from 'react-router-dom';
 
 const SocialSearch = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [results, setResults] = useState([]);
     const [error, setError] = useState(null);
+    const { userId } = useParams(); // Obtener el userId de los parámetros de la URL
 
     const evaluateRisk = (url) => {
         const urlLower = url.toLowerCase();
@@ -44,10 +46,11 @@ const SocialSearch = () => {
             Object.entries(data).forEach(([platform, links]) => {
                 if (Array.isArray(links)) {
                     links.forEach(link => {
+                        const risk = evaluateRisk(link);
                         allResults.push({
                             platform,
                             link,
-                            risk: evaluateRisk(link)
+                            risk
                         });
                     });
                 }
@@ -69,6 +72,33 @@ const SocialSearch = () => {
         const workbook = utils.book_new();
         utils.book_append_sheet(workbook, worksheet, "Resultados de Redes Sociales");
         writeFile(workbook, "resultados_redes_sociales.xlsx");
+    };
+
+    const guardarSocial = async () => {
+        try {
+            const promises = results.map(result => {
+                const postData = {
+                    UserId: userId, // Asegúrate de obtener el userId adecuadamente
+                    Platform: result.platform,
+                    Link: result.link,
+                    Risk: result.risk
+                };
+
+                return fetch('http://localhost:5000/api/social', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(postData)
+                });
+            });
+
+            await Promise.all(promises);
+            alert('Datos guardados exitosamente');
+        } catch (error) {
+            console.error('Error al guardar los datos:', error);
+            alert('Error al guardar los datos. Consulta la consola para más detalles.');
+        }
     };
 
     return (
@@ -111,6 +141,7 @@ const SocialSearch = () => {
             </div>
             <div className="botonGS">
                 <button className="bn62" onClick={exportToExcel}>Exportar a Excel</button>
+                <button className="bn62" onClick={guardarSocial}>Guardar</button>
             </div>
             <div className="regresarBTNGS">
                 <a href="../" className="bn62">Regresar</a>

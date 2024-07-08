@@ -1,0 +1,89 @@
+.reporteMain {
+    background-color: #1b2f31;
+    margin: 0;
+    font-family: 'Circulito', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    position: relative;
+    color: white;
+}
+.boton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tituloRepo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn62 {
+    padding: 2%;
+    color: #1b2f31;
+    background-color: #1cc49d;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    width: 8em;
+    font-size: large;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.btn62:hover {
+    background-color: #18a98c;
+}
+
+.resultados {
+    margin-top: 20px;
+    width: 80%;
+    max-height: 60vh; /* Establecer una altura máxima para el scroll */
+    overflow-y: auto; /* Habilitar el scroll vertical cuando se necesite */
+}
+
+.tabla-reportes {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-reportes th,
+.tabla-reportes td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.tabla-reportes th {
+    background-color: #1cc49d;
+    color: white;
+}
+
+.tabla-reportes td {
+    background-color: #1b2f31;
+    color: white;
+}
+
+.tabla-reportes tbody tr:nth-child(even) {
+    background-color: #2c3e3f;
+}
+
+.tabla-reportes tbody tr:hover {
+    background-color: #476568;
+}
+
+@media (max-width: 600px) {
+    .tabla-reportes {
+        font-size: smaller;
+    }
+}

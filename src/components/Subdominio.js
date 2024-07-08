@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { utils, writeFile } from 'xlsx';
-import '../components/styles/subdo.css';
+import './styles/subdo.css';
 
 const Subdominios = () => {
     const [results, setResults] = useState([]);
+    const { userId } = useParams();
 
     const handleSearch = async (domain) => {
         const response = await fetch(`https://subdomain-finder3.p.rapidapi.com/v1/subdomain-finder/?domain=${domain}`, {
@@ -58,6 +60,34 @@ const Subdominios = () => {
         writeFile(workbook, "subdominios.xlsx");
     };
 
+    const saveSearchResults = async () => {
+        try {
+            const promises = results.map(async (result) => {
+                const response = await fetch('http://localhost:5000/api/subdo/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        UserId: userId,
+                        Subdomain: result.subdomain,
+                        IP: result.ip || '',
+                        SubdomainRisk: result.subdomainRisk || 0,
+                        IPRisk: result.ipRisk || 0
+                    })
+                });
+                const data = await response.json();
+                console.log('Saved:', data);
+            });
+
+            await Promise.all(promises);
+            alert('Búsqueda guardada exitosamente');
+        } catch (error) {
+            console.error('Error al guardar:', error);
+            alert('Hubo un error al intentar guardar la búsqueda');
+        }
+    };
+
     return (
         <div className='mainSubdo'>
             <div className="titulo">
@@ -98,9 +128,12 @@ const Subdominios = () => {
             </div>
             <div className="boton">
                 <button onClick={exportToExcel} className="bn62">Exportar a Excel</button>
+                <button onClick={saveSearchResults} className="bn62">Guardar</button>
             </div>
+            
+
             <div className="regresarBTN">
-                <a href="../" className="bn62">Regresar</a>
+                <a href={`../main/${userId}`} className="bn62">Regresar</a>
             </div>
         </div>
     );

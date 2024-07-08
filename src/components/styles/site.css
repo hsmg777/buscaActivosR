@@ -27,7 +27,15 @@
       filter: blur(3px); 
       z-index: -1; 
   }
+.loggoIN {
+  padding: 1%;
+  color: white;
+}
 
+.linkito {
+  color: white;
+  text-decoration: none;
+}
 
 .titulo {
   display: flex;
